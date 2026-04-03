@@ -14,6 +14,11 @@ type VaultKMSConfigApplyConfiguration struct {
 	// vaultAddress specifies the URL of the Vault server.
 	// The value must start with either "http://" or "https://".
 	VaultAddress *string `json:"vaultAddress,omitempty"`
+	// vaultNamespace specifies the Vault namespace where the Transit secrets engine is mounted.
+	// This is only applicable for Vault Enterprise installations.
+	// The value can be between 1 and 256 characters.
+	// When this field is not set, no namespace is used.
+	VaultNamespace *string `json:"vaultNamespace,omitempty"`
 	// tlsCA is a reference to a ConfigMap in the openshift-config namespace containing
 	// the CA certificate bundle used to verify the TLS connection to the Vault server.
 	// The ConfigMap must contain the CA bundle in the key "ca-bundle.crt".
@@ -72,6 +77,14 @@ func (b *VaultKMSConfigApplyConfiguration) WithImage(value string) *VaultKMSConf
 // If called multiple times, the VaultAddress field is set to the value of the last call.
 func (b *VaultKMSConfigApplyConfiguration) WithVaultAddress(value string) *VaultKMSConfigApplyConfiguration {
 	b.VaultAddress = &value
+	return b
+}
+
+// WithVaultNamespace sets the VaultNamespace field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the VaultNamespace field is set to the value of the last call.
+func (b *VaultKMSConfigApplyConfiguration) WithVaultNamespace(value string) *VaultKMSConfigApplyConfiguration {
+	b.VaultNamespace = &value
 	return b
 }
 

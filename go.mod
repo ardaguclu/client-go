@@ -56,7 +56,7 @@ require (
 	sigs.k8s.io/yaml v1.6.0 // indirect
 )
 
-replace github.com/openshift/api => github.com/ardaguclu/openshift-api v0.0.0-20260403064255-aaa3ad19e451
+replace github.com/openshift/api => github.com/ardaguclu/openshift-api v0.0.0-20260403070409-bdd7b164d997
 
 // v3.9.0 is the only tag in openshift/client-go and it was created before
 // go.mod was introduced. We retract it so that go command don't select it1

@@ -73,6 +73,14 @@ type VaultKMSConfig struct {
 	// +required
 	VaultAddress string `json:"vaultAddress"`
 
+	// vaultNamespace specifies the Vault namespace where the Transit secrets engine is mounted.
+	// This is only applicable for Vault Enterprise installations.
+	// The value can be between 1 and 256 characters.
+	// When this field is not set, no namespace is used.
+	//
+	// +optional
+	VaultNamespace string `json:"vaultNamespace,omitempty"`
+
 	// tlsCA is a reference to a ConfigMap in the openshift-config namespace containing
 	// the CA certificate bundle used to verify the TLS connection to the Vault server.
 	// The ConfigMap must contain the CA bundle in the key "ca-bundle.crt".
