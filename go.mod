@@ -63,6 +63,8 @@ require (
 	sigs.k8s.io/yaml v1.6.0 // indirect
 )
 
+replace github.com/openshift/api => github.com/bertinatto/api v0.0.0-20260911193022-1cd4ac617d05
+
 // v3.9.0 is the only tag in openshift/client-go and it was created before
 // go.mod was introduced. We retract it so that go command don't select it1
 // automatically when resolving versions like @latest.
